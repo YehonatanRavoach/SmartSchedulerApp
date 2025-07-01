@@ -12,16 +12,19 @@ Built with JavaFX (Client) and Java (Server), this project demonstrates clean la
 - **Algorithm Module:** Contains the models, algorithms, and core logic, packaged as a JAR used by the server.
 
 ---
+## Demo Video
+
+[Watch the demo video](docs/demo.mp4)
 
 ## 🏗️ **Architecture**
 
 ### Server Side
 
-| ![Server Class Diagram](./Server_Class_Diagram.png) |
+| ![Server Class Diagram](docs/Diagrams/Server_Class_Diagram.png) |
 |:--:|
 | *Main Classes Overview* |
 
-| ![Server Layers Diagram](./Server_Layers_Diagram.png) |
+| ![Server Layers Diagram](docs/Diagrams/Server_Layers_Diagram.png) |
 |:--:|
 | *Layered Architecture* |
 
@@ -34,11 +37,11 @@ Built with JavaFX (Client) and Java (Server), this project demonstrates clean la
 
 ### Client Side
 
-| ![UI Package Diagram](./UI Package Diagram.png) |
+| ![UI Package Diagram](docs/Diagrams/UI%20Package%20Diagram.png) |
 |:-----------------------------------------------:|
 |           *Client Component Diagram*            |
 
-| ![UI Navigation Map](./UI Navigation Map.png) |
+| ![UI Navigation Map](docs/Diagrams/UI%20Navigation%20Map.png) |
 |:---------------------------------------------:|
 |              *UX Navigation Map*              |
 
