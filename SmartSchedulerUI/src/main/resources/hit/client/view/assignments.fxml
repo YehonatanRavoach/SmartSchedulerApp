@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="hit.client.controller.AssignmentController"
+           prefWidth="900" prefHeight="600"
+           styleClass="task-root"
+           stylesheets="@../assets/style.css">
+
+    <!-- helper -->
+    <fx:define>
+        <ToggleGroup fx:id="algorithmToggleGroup"/>
+    </fx:define>
+
+    <BorderPane>
+
+        <!-- ─── HEADER ─────────────────────────────────────────────── -->
+        <top>
+            <!-- VBox = 2 rows -->
+            <VBox spacing="0">
+
+                <!-- Row 1: Title ‧ Search ‧ Refresh -->
+                <HBox spacing="18" alignment="CENTER_LEFT"
+                      styleClass="task-header"
+                      style="-fx-padding: 24 20 8 20;">
+                    <Label text="Assignments" styleClass="task-title"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <TextField fx:id="searchField"
+                               promptText="Search by task, member, skill, ID…"
+                               prefWidth="280"
+                               styleClass="search-bar"/>
+
+                    <Button fx:id="refreshBtn"
+                            onAction="#onRefresh"
+                            styleClass="refresh-btn">
+                        <graphic>
+                            <FontIcon iconLiteral="mdi2a-autorenew" iconSize="19"/>
+                        </graphic>
+                        <text>Refresh</text>
+                    </Button>
+                </HBox>
+
+                <!-- Row 2 : Assign-Tasks + Algorithm toggle -->
+                <HBox spacing="20" alignment="CENTER_LEFT"
+                      style="-fx-padding: 10 0 15 16;">
+                    <Button fx:id="assignBtn"
+                            text="Assign Tasks"
+                            onAction="#onAssignClicked"
+                            styleClass="form-main-btn"
+                            prefHeight="38">
+                        <graphic>
+                            <FontIcon iconLiteral="mdi2b-brain" iconSize="18"/>
+                        </graphic>
+                    </Button>
+
+                    <Label text="Algorithm:"
+                           style="-fx-font-weight:bold; -fx-text-fill:#444; -fx-font-size:14px;"/>
+
+                    <ToggleButton fx:id="greedyToggle" text="Greedy"
+                                  toggleGroup="$algorithmToggleGroup"
+                                  styleClass="toggle-btn" selected="true"/>
+
+                    <ToggleButton fx:id="balancedToggle" text="Balanced"
+                                  toggleGroup="$algorithmToggleGroup"
+                                  styleClass="toggle-btn"/>
+                </HBox>
+            </VBox>
+        </top>
+
+        <!-- ─── CARDS AREA ─────────────────────────────────────────── -->
+        <center>
+            <ScrollPane fitToWidth="true"
+                        hbarPolicy="NEVER"
+                        styleClass="tasks-scroll">
+                <FlowPane fx:id="assignmentsFlow"
+                          hgap="10" vgap="32"
+                          prefWrapLength="1260"
+                          styleClass="tasks-flow"/>
+            </ScrollPane>
+        </center>
+
+    </BorderPane>
+</StackPane>

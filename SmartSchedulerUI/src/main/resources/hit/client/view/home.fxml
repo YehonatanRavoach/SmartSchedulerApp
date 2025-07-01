@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<!--  Home screen  -->
+<StackPane  xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="hit.client.controller.HomeController"
+
+            prefWidth="900"  prefHeight="600"
+            stylesheets="@../assets/style.css"
+            styleClass="root">
+
+    <!-- —centred welcome box—— -->
+    <VBox fx:id="contentBox"
+          alignment="CENTER"
+          spacing="45"
+          StackPane.alignment="CENTER"
+          maxWidth="800">
+
+        <!-- headline -->
+        <VBox alignment="CENTER" spacing="14">
+            <Label text="Welcome to Smart Scheduler"
+                   styleClass="hero-title"/>
+            <Label text="Create tasks, add team members and let our algorithms schedule everything for you."
+                   wrapText="true" maxWidth="540"
+                   styleClass="hero-subtitle"/>
+        </VBox>
+
+        <!-- actions -->
+        <HBox alignment="CENTER" spacing="60">
+            <Button fx:id="createTaskBtn" onAction="#openNewTask"
+                    styleClass="hero-btn" minWidth="200">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2f-file-plus" iconSize="20"/>
+                </graphic>
+                <text>New Task</text>
+            </Button>
+
+            <Button fx:id="createMemberBtn" onAction="#openNewMember"
+                    styleClass="hero-btn" minWidth="200">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2a-account-plus" iconSize="20"/>
+                </graphic>
+                <text>New Member</text>
+            </Button>
+        </HBox>
+    </VBox>
+</StackPane>

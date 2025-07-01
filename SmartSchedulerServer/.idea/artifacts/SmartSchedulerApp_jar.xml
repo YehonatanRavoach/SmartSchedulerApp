@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact name="SmartSchedulerApp:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SmartSchedulerApp_jar</output-path>
+    <root id="root">
+      <element id="archive" name="SmartSchedulerApp.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/src/main/java/com/hit/server/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="SmartSchedulerApp" />
+      </element>
+      <element id="file-copy" path="$PROJECT_DIR$/src/lib/sqlite-jdbc-3.49.1.0.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/lib/AlgorithmModule.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/lib/gson-2.13.1.jar" />
+    </root>
+  </artifact>
+</component>

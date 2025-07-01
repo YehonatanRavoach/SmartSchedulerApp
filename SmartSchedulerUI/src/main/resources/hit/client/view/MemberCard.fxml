@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<!--
+    MemberCard
+    • Shadowed card identical to TaskCard styling (class "task-card")
+    • Left coloured strip visualises workload %
+    • Three-dot menu (top-right) exposes “Assign tasks to member”
+-->
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="hit.client.controller.MemberCardController"
+            prefWidth="400" minWidth="360" maxWidth="400"
+            styleClass="task-card"
+            stylesheets="@../assets/style.css">
+
+    <HBox AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+          AnchorPane.topAnchor="0"  AnchorPane.bottomAnchor="0">
+
+        <!-- Work-load (vertical) strip -->
+        <StackPane prefWidth="14" maxWidth="14" minWidth="14"
+                   styleClass="allocation-strip" alignment="TOP_CENTER">
+            <Rectangle fx:id="workloadBar"
+                       width="10" height="0"
+                       arcWidth="10" arcHeight="10"/>
+        </StackPane>
+
+        <!-- Main content -->
+        <VBox spacing="14" alignment="TOP_LEFT" style="-fx-padding: 18 22 18 18;">
+
+            <!-- Header row: name · efficiency · menu -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label fx:id="memberNameLabel"    styleClass="task-title"/>
+                <Label fx:id="efficiencyLabel"    styleClass="priority-label"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <!-- 3-dot vertical menu -->
+                <MenuButton fx:id="cardMenu"
+                            styleClass="icon-button"
+                            popupSide="BOTTOM">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2d-dots-vertical" iconSize="20"/>
+                    </graphic>
+
+                    <items>
+                        <MenuItem fx:id="assignItem"
+                                  text="Assign tasks to member"
+                                  onAction="#onAssignClicked"/>
+                    </items>
+                </MenuButton>
+            </HBox>
+
+            <Separator/>
+
+            <!-- Meta-data grid -->
+            <GridPane hgap="10" vgap="8">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="90"  halignment="RIGHT"/>
+                    <ColumnConstraints minWidth="200" halignment="LEFT"/>
+                </columnConstraints>
+
+                <Label text="ID:"          styleClass="field-name"  GridPane.rowIndex="0"/>
+                <Label fx:id="idLabel"     styleClass="secondary-text"
+                       GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Max Hours:"   styleClass="field-name"  GridPane.rowIndex="1"/>
+                <Label fx:id="maxHoursLabel" styleClass="secondary-text"
+                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Remaining:"   styleClass="field-name"  GridPane.rowIndex="2"/>
+                <Label fx:id="remainingLabel" styleClass="secondary-text"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="Skills:"      styleClass="field-name"  GridPane.rowIndex="3"/>
+                <FlowPane fx:id="skillsFlow"
+                          hgap="6" vgap="6" maxWidth="210"
+                          GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            </GridPane>
+        </VBox>
+    </HBox>
+</AnchorPane>

@@ -1,0 +1,702 @@
+/* =========================================================
+ *  SmartScheduler – App Stylesheet
+ * ---------------------------------------------------------
+ *  SECTION INDEX
+ *    01  Base & Typography
+ *    02  Layout Containers
+ *    03  Inputs & ComboBoxes
+ *    04  Buttons
+ *    05  Skill Tags & Chips
+ *    06  Labels, Error States & Priority Badge
+ *    07  Scroll-Pane / Tag Pane
+ *    08  Misc. Widgets (tiles, search bar)
+ *    90  Ikonli defaults
+ * =======================================================*/
+
+/* ---------- 01 • Base & Typography -------------------- */
+
+.root{
+    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%,#f4f7fb 0%,#ffffff 65%);
+    -fx-font-family:"Segoe UI",Arial,sans-serif;
+    -fx-text-fill:#1b1b1b;
+}
+
+/* ----- headline ----------------------------------------- */
+.hero-title {
+    -fx-font-size: 40px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #27364e;          /* near-navy */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 6, 0.15, 0, 1);
+}
+
+/* headlines -------------------------------------------------------------- */
+.hero-title{
+    -fx-font-size:40px;
+    -fx-font-weight:800;
+    -fx-text-fill:#27364e;
+    -fx-effect:dropshadow(gaussian,rgba(0,0,0,0.08),6,0.15,0,1);
+}
+.hero-subtitle{
+    -fx-font-size:18px;
+    -fx-text-fill:#53627c;
+    -fx-line-spacing:2;
+    -fx-text-alignment:center;
+}
+
+/* ----- big CTA buttons ---------------------------------- */
+.hero-btn {
+    -fx-background-color:
+            linear-gradient(to bottom, #5c7aff 0%, #4363e6 100%);
+    -fx-background-radius: 28;
+    -fx-border-radius:     28;
+    -fx-pref-height: 56;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 17px;
+    -fx-font-weight: 700;
+    -fx-padding: 0 34;               /* horizontal padding */
+    -fx-cursor: hand;
+
+    /* subtle grow / shadow on hover */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.16), 8, 0.25, 0, 3);
+    -fx-transition:
+            -fx-effect     160ms cubic-bezier(.32,.55,.33,1),
+            -fx-scale-x    160ms cubic-bezier(.32,.55,.33,1),
+            -fx-scale-y    160ms cubic-bezier(.32,.55,.33,1);
+}
+
+.hero-btn:hover {
+    -fx-scale-x: 1.04;
+    -fx-scale-y: 1.04;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.26), 12, 0.30, 0, 4);
+}
+
+/* icons inside the buttons */
+.hero-btn .ikonli-font-icon {
+    -fx-icon-color: white;
+    -fx-icon-size: 20px;
+    -fx-padding: 0 8 0 0;
+}
+
+/* Headings */
+.form-title       { -fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2a2a2a; }
+.section-title    { -fx-font-size: 18px; -fx-text-fill: #444; }
+
+/* Field-level labels */
+.field-name       { -fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #232323; }
+.secondary-text   { -fx-font-size: 13px; -fx-text-fill: #888; }
+
+/* ---------- 02 • Layout Containers -------------------- */
+
+.task-form-box{
+    -fx-background-color:#fff;
+    -fx-background-radius:36;
+    -fx-effect:dropshadow(gaussian,#7db2ff50,32,0.22,0,10);
+    -fx-padding:42 38 34 38;
+}
+
+/* Generic card & task-card */
+.card,.task-card{
+    -fx-background-color:#fff;
+    -fx-background-radius:18;
+    -fx-border-radius:18;
+    -fx-padding:20;
+    -fx-effect:dropshadow(gaussian,rgba(0,0,0,0.08),10,0.11,0,3);
+    -fx-cursor:hand;
+}
+.card:hover,.task-card:hover{
+    -fx-effect:dropshadow(gaussian,#6a82fb44,14,0.14,0,4);
+    -fx-translate-y:-4;
+}
+
+.modal{
+    -fx-background-color:#fff;
+    -fx-background-radius:16;
+    -fx-padding:30;
+    -fx-effect:dropshadow(gaussian,rgba(0,0,0,0.20),20,0.2,0,6);
+}
+
+/* ---------- 03 • Inputs & ComboBoxes ------------------ */
+
+.form-input,.text-field,.combo-box-base{
+    -fx-background-color:#f1f6fc;
+    -fx-border-color:#b3d4fc;
+    -fx-border-radius:10;
+    -fx-background-radius:10;
+    -fx-font-size:15px;
+    -fx-padding:2 10;
+}
+
+.text-field,.form-input{ -fx-pref-height:40; }
+.text-field:focused,.form-input:focused,.combo-box-base:focused{
+    -fx-border-color:#3795ff;
+    -fx-effect:dropshadow(three-pass-box,#4a90e2,8,0,0,0);
+}
+
+
+/* ---------- 04 • Buttons ------------------------------ */
+
+.form-main-btn{
+    -fx-background-color:#0078d4;
+    -fx-text-fill:white;
+    -fx-background-radius:16;
+    -fx-font-size:15px;
+    -fx-font-weight:bold;
+    -fx-padding:8 24;
+    -fx-cursor:hand;
+    -fx-effect:dropshadow(three-pass-box,rgba(0,0,0,0.18),6,0,0,3);
+}
+.form-main-btn:hover{
+    -fx-background-color:#0062ad;
+    -fx-effect:dropshadow(gaussian,rgba(0,0,0,0.20),8,0,0,4);
+    -fx-translate-y:-1;
+}
+
+.form-danger-btn {
+    -fx-background-color: #e74c3c;
+    -fx-background-radius: 16;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.18), 6, 0, 0, 3);
+    -fx-transition: all .15s ease;
+}
+.form-danger-btn:hover {
+    -fx-background-color: #c0392b;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.20), 8, 0, 0, 4);
+    -fx-translate-y: -1;
+}
+.form-cancel-btn {
+    -fx-background-color: #ededed;
+    -fx-background-radius: 16;
+    -fx-text-fill: #3d3d3d;
+    -fx-font-size: 14px;
+    -fx-padding: 8 18;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.18), 6, 0, 0, 3);
+    -fx-transition: all .15s ease;
+}
+.form-cancel-btn:hover {
+    -fx-background-color: #d6d6d6;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.20), 8, 0, 0, 4);
+    -fx-translate-y: -1;
+}
+
+
+/* ---------- 05 • Skill Tags / Chips ------------------- */
+
+.skill-tag{
+    -fx-background-color:#6a82fb;
+    -fx-text-fill:white;
+    -fx-background-radius:16;
+    -fx-font-size:13px;
+    -fx-font-weight:500;
+    -fx-padding:4 14;
+}
+.skill-tag-empty{
+    -fx-background-color:transparent;
+    -fx-text-fill:#8c8c8c;
+    -fx-background-radius:16;
+    -fx-font-size:13px;
+    -fx-padding:4 10;
+}
+
+
+.skills-anchor-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.skills-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+.skills-scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+.skills-tag-pane {
+    -fx-background-color: transparent;
+    -fx-padding: 2;
+}
+
+/* ---------- 06 • Labels, Errors, Priority ------------- */
+
+.error-label{ -fx-text-fill:#d8000c; -fx-font-size:12px; }
+.input-error{
+    -fx-border-color:#ff6565!important;
+    -fx-background-color:#fff7f7;
+    -fx-effect:dropshadow(three-pass-box,#ffbaba,8,0,0,0);
+}
+.priority-label{ -fx-background-color:#ffa502; -fx-text-fill:white;
+    -fx-background-radius:8; -fx-font-size:14px; -fx-font-weight:bold; -fx-padding:2 10; }
+
+
+/* ---------- 07 • Misc Scroll & Viewport --------------- */
+
+.search-bar{
+    -fx-background-color:#fff;
+    -fx-border-color:#ccc;
+    -fx-background-radius:32;
+    -fx-border-radius:32;
+    -fx-padding:10 20;
+    -fx-font-size:14px;
+}
+
+/* ---------- 08 • Tile Buttons ------------------------- */
+
+.tile-button {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-padding: 16 28;
+    -fx-font-size: 15px;
+    -fx-transition: all .3s ease;
+}
+.tile-button:hover {
+    -fx-background-color: #e6f1fb;
+    -fx-border-color: #0078d4;
+}
+
+/* ---------- 90 • Ikonli Defaults + Error Icon --------- */
+
+.ikonli-font-icon{ -fx-icon-size:16px; -fx-icon-color:inherit; }
+.ikonli-font-icon.error-icon,
+.error-icon {
+    -fx-icon-color: #e74c3c;
+    -fx-opacity: 0.97;
+}
+
+.menu-button:focused, .menu-button:hover,
+.icon-button:focused, .icon-button:hover {
+    -fx-background-color: #f5f5fa;
+}
+
+.title-icon.ikonli-font-icon {
+    -fx-icon-size: 32px;
+}
+
+/* light blue for "create" mode */
+.create-bg { -fx-background-color: #f9f9f9; }
+/* light peach for "edit" mode */
+.edit-bg { -fx-background-color: #f9f9f9; }
+
+/* ---------- Assignment Card Styles -------------------- */
+.assignment-card {
+    -fx-background-color: #fff;
+    -fx-background-radius: 24;
+    -fx-border-radius: 24;
+    -fx-padding: 14 24 14 20;
+    -fx-effect: dropshadow(gaussian, #4265fc22, 17, 0.20, 0, 8);
+    -fx-cursor: hand;
+    -fx-transition: all .18s cubic-bezier(0.32,0.55,0.33,1);
+}
+.assignment-card:hover {
+    -fx-effect: dropshadow(gaussian, #284bb299, 26, 0.22, 0, 10);
+    -fx-background-color: #f8faff;
+    -fx-translate-y: -4;
+}
+.assignment-avatar {
+    -fx-background-color: linear-gradient(to bottom, #4261d7 0%, #2942a7 100%);
+    -fx-background-radius: 100;
+    -fx-border-radius: 100;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, #4c7aed44, 9, 0.12, 0, 0);
+}
+.assignment-label {
+    -fx-font-size: 15px;
+    -fx-font-weight: 500;
+    -fx-text-fill: #232323;
+}
+.assignment-id-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-underline: true;
+    -fx-text-fill: #7d8edb;
+}
+
+.assignment-id-link {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a4fb4;
+    -fx-underline: true;
+}
+.assignment-id-link:hover {
+    -fx-text-fill: #0d347c;
+}
+.assignment-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: 500;
+    -fx-text-fill: #263661;
+    -fx-underline: false;
+    -fx-padding: 0 3 0 3;
+}
+.assignment-member-link {
+    -fx-font-size: 15px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #159cbb;
+    -fx-underline: true;
+    -fx-padding: 0 2 0 2;
+}
+.assignment-member-link:hover {
+    -fx-text-fill: #126d85;
+    -fx-cursor: hand;
+}
+.assigned-hours-label {
+    -fx-font-size: 15px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #2e3b65;
+    -fx-padding: 0 1 0 1;
+}
+
+/* Assignments header second row */
+.assignments-header-row2 {
+    -fx-padding: 2 0 9 2;
+    -fx-background-color: transparent;
+}
+.algo-toggle-left, .algo-toggle-right {
+    -fx-background-color: #e8f0fa;
+    -fx-text-fill: #284bb2;
+    -fx-font-weight: 700;
+    -fx-border-color: #b6cafd;
+    -fx-border-width: 1;
+}
+.algo-toggle-left:selected, .algo-toggle-right:selected {
+    -fx-background-color: linear-gradient(to bottom, #597fff 60%, #4261d7 100%);
+    -fx-text-fill: #fff;
+    -fx-border-color: #4c7aed;
+}
+.algo-toggle-left { -fx-border-radius: 15 0 0 15; }
+.algo-toggle-right { -fx-border-radius: 0 15 15 0; }
+
+.toggle-btn {
+    -fx-background-color: #ededf8;
+    -fx-text-fill: #4363e6;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #4363e6;
+    -fx-border-width: 2;
+    -fx-padding: 7 24;
+    -fx-cursor: hand;
+}
+.toggle-btn:selected, .toggle-btn:selected:hover {
+    -fx-background-color: #4363e6;
+    -fx-text-fill: #fff;
+    -fx-border-color: #4363e6;
+}
+.toggle-btn:hover {
+    -fx-background-color: #c9d8fc;
+    -fx-text-fill: #222;
+}
+
+/* --- Assignment Delete Button (top-right round icon) --- */
+.delete-action-btn {
+    -fx-background-color: #f3f4f7;
+    -fx-background-radius: 50px;
+    -fx-border-radius: 50px;
+    -fx-cursor: hand;
+    -fx-padding: 0;
+    -fx-effect: dropshadow(gaussian, #e6e8ef44, 7, 0.16, 0, 2);
+    -fx-alignment: center;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-min-width: 48px;
+    -fx-min-height: 48px;
+    -fx-max-width: 48px;
+    -fx-max-height: 48px;
+    -fx-background-insets: 0;
+    -fx-transition: all .15s;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+.delete-action-btn:hover {
+    -fx-background-color: #ffe9e9;
+    -fx-effect: dropshadow(gaussian, #e74c3c33, 10, 0.24, 0, 3);
+}
+.delete-icon {
+    -fx-icon-color: #e74c3c;
+    -fx-icon-size: 23px;
+}
+
+.task-root{  /* whole screen gradient */
+    -fx-background-color:linear-gradient(to bottom,#fafafa 0%,#f4f7fb 100%);
+}
+
+/* -- header bar (title + search + refresh) -------------------------------- */
+.task-header {
+    -fx-background-color: #ffffff;
+    -fx-padding: 18 24;
+    -fx-spacing: 18;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 12, 0.15, 0, 2);
+}
+.task-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #232323;
+}
+.refresh-btn {
+    -fx-background-color: transparent;
+    -fx-border-radius: 24;
+    -fx-border-color: #0078d4;
+    -fx-border-width: 2;
+    -fx-text-fill: #0078d4;
+    -fx-font-weight: 600;
+    -fx-padding: 6 22;
+    -fx-alignment: CENTER_LEFT;
+}
+.refresh-btn:hover {
+    -fx-background-color: #eaf4ff;
+}
+.refresh-btn .ikonli-font-icon {      /* icon inside button */
+    -fx-icon-color: #0078d4;
+    -fx-padding: 0 6 0 0;
+}
+
+/* -- scroll pane (hides ugly bar, keeps soft edge) ------------------------ */
+.tasks-scroll {
+    -fx-background-color: transparent;
+    -fx-padding: 22 18 34 18;          /* top | right | bottom | left */
+}
+.tasks-scroll .viewport,
+.tasks-scroll .content {
+    -fx-background-color: transparent;
+}
+
+/* -- flow pane that hosts cards ------------------------------------------ */
+.tasks-flow {
+    -fx-padding: 4;
+    -fx-hgap: 10;
+    -fx-vgap: 30;
+}
+
+/*  FAB (Floating Action Button)  ------------------------------------ */
+.fab-btn {
+    -fx-background-color: linear-gradient(to bottom, #5872d6 0%, #273e88 100%);
+    -fx-background-radius: 100;
+    -fx-pref-width: 74;     -fx-pref-height: 74;
+    -fx-min-width: 74;      -fx-min-height: 74;
+    -fx-max-width: 74;      -fx-max-height: 74;
+    -fx-effect: dropshadow(gaussian, #88888866, 12, 0.25, 0, 3);
+    -fx-padding: 0;
+    -fx-alignment: center;
+    -fx-cursor: hand;
+
+    -fx-transition:
+            -fx-scale-x 0.25s cubic-bezier(0.32,0.55,0.33,1),
+            -fx-scale-y 0.25s cubic-bezier(0.32,0.55,0.33,1),
+            -fx-effect  0.25s cubic-bezier(0.32,0.55,0.33,1);
+}
+
+.fab-btn:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+
+    -fx-effect: dropshadow(gaussian, #66668899, 16, 0.28, 0, 4);
+}
+
+/* Left vertical strip in Task- / Member- cards
+   ───────────────────────────────────────────── */
+.allocation-strip {
+    /* keep the column itself transparent – we only paint the Rectangle inside */
+    -fx-background-color: transparent;
+    -fx-padding: 0 3 0 0;
+    -fx-pref-width: 18; /* little air-gap from card edge */
+}
+
+/* Priority / efficiency badge – colour is swapped from code,
+   but we still give it the right size & radius                 */
+.priority-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: 700;
+    -fx-padding: 2 12;
+    -fx-background-radius: 9;
+}
+
+/* Three-dot icon button used as the card’s context menu
+   ───────────────────────────────────────────────────── */
+.icon-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-padding: 4 6;
+}
+.icon-button:hover,
+.icon-button:focused {
+    /* subtle hover so it doesn’t look “jumpy” */
+    -fx-background-color: #f3f4f8;
+}
+
+/* Optional – give the ⋮ icon itself a neutral grey so it isn’t pure black */
+.icon-button .ikonli-font-icon {
+    -fx-icon-color: #6d6d6d;
+}
+
+/* Tag / chip for skills (in MemberCard) – thin tweak so it matches cards */
+.skill-tag {
+    -fx-background-radius: 12;
+    -fx-padding: 2 10;
+    -fx-font-size: 12px;
+}
+
+/* Make search bars consistent across all screens (Assignments borrowed
+   the rule, here we just guarantee both share the same radius + outline) */
+.search-bar {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 6, 0.05, 0, 1);
+}
+
+/* ──────────────────────────────────────────────
+ *  SIDEBAR – modern dark theme
+ * ──────────────────────────────────────────── */
+
+/* whole column */
+.sidebar {
+    -fx-pref-width: 220;                  /* wider bar */
+    -fx-background-color: #2C3E50;        /* dark-grey/blue */
+    -fx-padding: 16 0 16 0;               /* top | hors | bottom */
+    -fx-spacing: 6;
+}
+
+/* each clickable row */
+.sidebar-item {
+    -fx-padding: 10 20;                   /* vertical | horizontal */
+    -fx-spacing: 14;                      /* icon ↔ text gap */
+    -fx-alignment: CENTER_LEFT;
+    -fx-cursor: hand;
+
+    -fx-background-color: transparent;
+    -fx-background-radius: 12;
+    -fx-border-radius:    12;
+    -fx-transition: all .2s;
+}
+
+/* icon */
+.sidebar-item .ikonli-font-icon {
+    -fx-icon-size: 20px;
+    -fx-icon-color: #ecf0f1;              /* light text */
+}
+
+/* text */
+.sidebar-item .label {
+    -fx-text-fill: #ecf0f1;
+    -fx-font-size: 15px;
+    -fx-font-weight: 500;
+}
+
+/* hover + selected feel */
+.sidebar-item:hover {
+    -fx-background-color: #34495E;
+}
+.sidebar-item:selected,
+.sidebar-item.active {                    /* add `.active` in controller for current page */
+    -fx-background-color: #1ABC9C;        /* teal highlight */
+}
+.sidebar-item:selected .label,
+.sidebar-item.active .label,
+.sidebar-item:selected .ikonli-font-icon,
+.sidebar-item.active .ikonli-font-icon {
+    -fx-text-fill: #ffffff;
+    -fx-icon-color: #ffffff;
+}
+
+/* ─────────────────────────────────────────────
+ * Algorithm chooser dialog
+ * ─────────────────────────────────────────── */
+.dialog-root {
+    -fx-padding: 32 36;
+    -fx-background-radius: 18;
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 16, 0.28, 0, 4);
+    -fx-font-family: "Segoe UI";
+}
+
+.algo-toggle {
+    -fx-background-radius: 24;
+    -fx-border-radius:     24;
+    -fx-background-color:  #ecf0f1;
+    -fx-text-fill: #34495e;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 6 22;
+    -fx-cursor: hand;
+}
+.algo-toggle:selected {
+    -fx-background-color: linear-gradient(to bottom,#1abc9c 0%,#16a085 100%);
+    -fx-text-fill: #ffffff;
+}
+.algo-toggle:hover   { -fx-background-color: #dce5ee; }
+.algo-toggle:selected:hover { -fx-background-color: #16a085; }
+
+.dialog-main-btn {
+    -fx-background-color: #4363e6;
+    -fx-background-radius: 24;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15px;
+    -fx-font-weight: 700;
+    -fx-padding: 6 26;
+    -fx-cursor: hand;
+}
+.dialog-main-btn:hover {
+    -fx-background-color: #3650c2;
+}
+
+.stats-tile{
+    -fx-background-color:white;
+    -fx-background-radius:18;
+    -fx-effect:dropshadow(gaussian,#b0d0ee55,15,0.3,0,6);
+    -fx-padding:32 24;
+}
+.stats-load-tile    { -fx-border-color:#1976d2; -fx-border-width:0 0 0 4; }
+.stats-kpi-tile     { -fx-border-color:#00897b; -fx-border-width:0 0 0 4; }
+.stats-skills-tile  { -fx-border-color:#7e57c2; -fx-border-width:0 0 0 4; }
+.stats-overload-tile{ -fx-border-color:#e53935; -fx-border-width:0 0 0 4; }
+
+.tile-title   { -fx-font-size:24px; -fx-font-weight:bold; -fx-text-fill:#204670; }
+.tile-subtitle{ -fx-font-size:14px; -fx-text-fill:#7a99b4; }
+.load-percent{  -fx-font-size:60px; -fx-font-weight:bold; -fx-text-fill:#1565c0; }
+
+.load-badge-high{ -fx-background-color:#ff7043; -fx-background-radius:8; -fx-text-fill:#fff; -fx-padding:2 10;}
+.load-badge-medium{ -fx-background-color:#fbc02d; -fx-text-fill:#333; }
+.load-badge-low{ -fx-background-color:#43a047; -fx-text-fill:#fff; }
+
+.kpi-number{ -fx-font-size:30px; -fx-font-weight:bold; -fx-text-fill:#00897b; }
+.kpi-number-unassigned{ -fx-font-size:30px; -fx-font-weight:bold; -fx-text-fill:#e53935; }
+.kpi-label{ -fx-font-size:13px; -fx-text-fill:#75849a; }
+
+.stats-pie-chart{ -fx-background-color:transparent; }
+.overload-table { -fx-background-radius:8; -fx-font-size:15px; }
+.tile-note      { -fx-font-size:14px; -fx-text-fill:#a2b0c6; }
+
+.modern-table {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-radius: 6;
+    -fx-selection-bar:#e1f5fe;
+}
+.modern-table .column-header-background {
+    -fx-background-color: linear-gradient(to bottom,#f0f6ff 0%,#e6eefc 100%);
+    -fx-background-radius: 6 6 0 0;
+}
+.modern-table .column-header,          /* header cells */
+.modern-table .filler{
+    -fx-size: 28px;
+    -fx-border-color: transparent transparent #d0def7 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-alignment: CENTER;
+    -fx-font-weight: 600;
+    -fx-text-fill: #27446d;
+}
+.modern-table .table-row-cell {       /* body rows */
+    -fx-cell-size: 30px;
+    -fx-border-color: transparent transparent #e6e6e6 transparent;
+}
+.modern-table .table-row-cell:odd {
+    -fx-background-color: #fafcff;
+}
+.modern-table .table-row-cell:selected {
+    -fx-background-color: #cbe3ff;
+}
+.modern-table .table-cell {
+    -fx-alignment: CENTER;
+    -fx-padding: 0 6;
+}
+
+

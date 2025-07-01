@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+
+<!--
+    TaskCard - Responsive card for a single task.
+    * Shows progress (vertical colored bar)
+    * Dynamically grows to fit skills (no overflow)
+    * Standard style hooks for dark/light modes
+-->
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="hit.client.controller.TaskCardController"
+            prefWidth="400" minWidth="360" maxWidth="400"
+            stylesheets="@../assets/style.css"
+            styleClass="task-card">
+
+    <HBox AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0">
+
+        <!-- Progress / Allocation vertical bar -->
+        <StackPane prefWidth="14" maxWidth="14" minWidth="14"
+                   styleClass="allocation-strip" alignment="TOP_CENTER">
+            <Rectangle fx:id="allocationBar"
+                       width="8" height="0" arcWidth="8" arcHeight="8"/>
+        </StackPane>
+
+        <!-- Main content -->
+        <VBox spacing="14" alignment="TOP_LEFT"
+              style="-fx-padding: 18 22 18 18;">
+            <!-- Task title and priority badge -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label fx:id="taskNameLabel" styleClass="task-title"/>
+                <Label fx:id="priorityLabel" styleClass="priority-label"/>
+            </HBox>
+            <Separator/>
+            <GridPane hgap="10" vgap="8">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="90" halignment="RIGHT"/>
+                    <ColumnConstraints minWidth="200" halignment="LEFT"/>
+                </columnConstraints>
+
+                <!-- ID -->
+                <Label text="ID:" styleClass="field-name" GridPane.rowIndex="0"/>
+                <Label fx:id="idLabel" styleClass="secondary-text"
+                       GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <!-- Duration -->
+                <Label text="Duration:" styleClass="field-name" GridPane.rowIndex="1"/>
+                <Label fx:id="durationLabel" styleClass="secondary-text"
+                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <!-- Remaining -->
+                <Label text="Remaining:" styleClass="field-name" GridPane.rowIndex="2"/>
+                <Label fx:id="remainingLabel" styleClass="secondary-text"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <!-- Created -->
+                <Label text="Created:" styleClass="field-name" GridPane.rowIndex="3"/>
+                <Label fx:id="createdAtLabel" styleClass="secondary-text"
+                       GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <!-- Skills -->
+                <Label text="Skills:" styleClass="field-name" GridPane.rowIndex="4"/>
+                <FlowPane fx:id="skillsFlow"
+                          hgap="6" vgap="6"
+                          maxWidth="210"
+                          GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            </GridPane>
+        </VBox>
+    </HBox>
+</AnchorPane>

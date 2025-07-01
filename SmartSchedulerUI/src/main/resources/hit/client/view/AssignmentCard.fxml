@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<!--
+ ──────────────────────────────────────────────────────────────
+  AssignmentCard – same shell as TaskCard (task-card class)
+ ──────────────────────────────────────────────────────────────
+-->
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="hit.client.controller.AssignmentCardController"
+            prefWidth="400" minWidth="360" maxWidth="400"
+            stylesheets="@../assets/style.css"
+            styleClass="task-card">
+
+    <HBox AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+          AnchorPane.topAnchor="0"  AnchorPane.bottomAnchor="0"
+          spacing="20" alignment="CENTER_LEFT"
+          style="-fx-padding: 10 14 10 14;">
+
+        <!-- round blue avatar (same as before) -->
+        <StackPane minWidth="54" minHeight="54" maxWidth="54" maxHeight="54"
+                   styleClass="assignment-avatar">
+            <FontIcon iconLiteral="mdi2f-format-list-bulleted" iconSize="26"/>
+        </StackPane>
+
+        <!-- core text -->
+        <VBox spacing="10" alignment="CENTER_LEFT">
+
+            <HBox spacing="7" alignment="CENTER_LEFT">
+                <FontIcon iconLiteral="mdi2f-format-list-bulleted" iconSize="20"/>
+                <Label text="Task:" styleClass="assignment-label"/>
+                <Hyperlink fx:id="taskIdLink"
+                           onAction="#onTaskClicked"
+                           styleClass="assignment-id-link"/>
+            </HBox>
+
+            <HBox spacing="7" alignment="CENTER_LEFT">
+                <FontIcon iconLiteral="mdi2a-account" iconSize="20"/>
+                <Label text="Member:" styleClass="assignment-label"/>
+                <Hyperlink fx:id="memberIdLink"
+                           onAction="#onMemberClicked"
+                           styleClass="assignment-id-link"/>
+            </HBox>
+
+            <HBox spacing="8" alignment="CENTER_LEFT" style="-fx-padding: 2 0 0 1;">
+                <FontIcon iconLiteral="mdi2c-clock-outline" iconSize="20"/>
+                <Label text="Assigned:" styleClass="assignment-label"/>
+                <Label fx:id="assignedHoursLabel" styleClass="assigned-hours-label"/>
+                <Label text="hours" styleClass="assigned-hours-label"/>
+            </HBox>
+        </VBox>
+
+        <!-- push delete button to the far right -->
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <!-- circular delete icon -->
+        <Button fx:id="deleteBtn"
+                onAction="#onDeleteClicked"
+                styleClass="delete-action-btn"
+                minWidth="48" minHeight="48"
+                maxWidth="48" maxHeight="48">
+            <graphic>
+                <FontIcon iconLiteral="mdi2t-trash-can-outline" styleClass="delete-icon"/>
+            </graphic>
+        </Button>
+    </HBox>
+</AnchorPane>

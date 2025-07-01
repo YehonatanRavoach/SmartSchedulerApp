@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<!--
+    Modern dark sidebar (220 px) — icons + labels
+     • IDs:  dashboardBtn | tasksBtn | membersBtn | assignmentsBtn
+    • ToggleGroup keeps exactly one selected.
+    • Styled by the “sidebar” block in the CSS you added.
+-->
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="hit.client.controller.SidebarController"
+            styleClass="sidebar"
+            stylesheets="@../assets/style.css"
+            prefWidth="200">
+
+    <!-- one shared ToggleGroup -->
+    <fx:define>
+        <ToggleGroup fx:id="navToggle"/>
+    </fx:define>
+
+    <!-- vertical stack of items -->
+    <VBox spacing="6" AnchorPane.topAnchor="12" AnchorPane.bottomAnchor="12">
+
+        <!-- ═══ Dashboard ══════════════════════════════ -->
+        <ToggleButton fx:id="dashboardBtn"
+                      toggleGroup="$navToggle"
+                      styleClass="sidebar-item"
+                      onAction="#onDashboard"
+                      mnemonicParsing="false">
+            <graphic>
+                <HBox spacing="14" alignment="CENTER_LEFT">
+                    <FontIcon iconLiteral="mdi2f-format-list-bulleted-square"/>
+                    <Label text="Dashboard"/>
+                </HBox>
+            </graphic>
+        </ToggleButton>
+
+        <!-- ═══ Tasks ══════════════════════════════════ -->
+        <ToggleButton fx:id="tasksBtn"
+                      toggleGroup="$navToggle"
+                      styleClass="sidebar-item"
+                      onAction="#onTasks"
+                      mnemonicParsing="false">
+            <graphic>
+                <HBox spacing="14" alignment="CENTER_LEFT">
+                    <FontIcon iconLiteral="mdi2f-format-list-bulleted"/>
+                    <Label text="Tasks"/>
+                </HBox>
+            </graphic>
+        </ToggleButton>
+
+        <!-- ═══ Members ════════════════════════════════ -->
+        <ToggleButton fx:id="membersBtn"
+                      toggleGroup="$navToggle"
+                      styleClass="sidebar-item"
+                      onAction="#onMembers"
+                      mnemonicParsing="false">
+            <graphic>
+                <HBox spacing="14" alignment="CENTER_LEFT">
+                    <FontIcon iconLiteral="mdi2a-account-group-outline"/>
+                    <Label text="Members"/>
+                </HBox>
+            </graphic>
+        </ToggleButton>
+
+        <!-- ═══ Assignments ════════════════════════════ -->
+        <ToggleButton fx:id="assignmentsBtn"
+                      toggleGroup="$navToggle"
+                      styleClass="sidebar-item"
+                      onAction="#onAssignments"
+                      mnemonicParsing="false">
+            <graphic>
+                <HBox spacing="14" alignment="CENTER_LEFT">
+                    <FontIcon iconLiteral="mdi2b-briefcase-variant-outline"/>
+                    <Label text="Assignments"/>
+                </HBox>
+            </graphic>
+        </ToggleButton>
+
+        <!--Statistics button -->
+
+        <ToggleButton fx:id="statsBtn"
+                      toggleGroup="$navToggle"
+                      styleClass="sidebar-item"
+                      onAction="#onStats"
+                      mnemonicParsing="false">
+            <graphic>
+                <HBox spacing="14" alignment="CENTER_LEFT">
+                    <FontIcon iconLiteral="mdi2c-chart-box-outline"/>
+                    <Label text="Statistics"/>
+                </HBox>
+            </graphic>
+        </ToggleButton>
+
+    </VBox>
+</AnchorPane>

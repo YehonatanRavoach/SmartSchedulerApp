@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--  Statistics dashboard – 2 × 2 grid of tiles  -->
+<GridPane fx:id="statsRoot"
+          xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="hit.client.controller.StatsController"
+          prefWidth="900" prefHeight="600"
+          hgap="32"  vgap="32"
+          stylesheets="@../assets/style.css">
+
+    <!-- outer margin -->
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <!-- equal-size columns / rows -->
+    <columnConstraints>
+        <ColumnConstraints percentWidth="50"/>
+        <ColumnConstraints percentWidth="50"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints percentHeight="50"/>
+        <RowConstraints percentHeight="50"/>
+    </rowConstraints>
+
+    <!-- ─────────── 1 • LOAD UTILISATION ──────────── -->
+    <StackPane GridPane.rowIndex="0" GridPane.columnIndex="0"
+               styleClass="stats-tile stats-load-tile">
+        <VBox alignment="CENTER" spacing="12">
+            <Label text="Load Utilisation" styleClass="tile-title"/>
+
+            <HBox alignment="CENTER" spacing="12">
+                <Label fx:id="loadPercentLabel"
+                       text="20%"
+                       styleClass="load-percent"
+                       style="-fx-font-size:60px;"/>
+                <Label fx:id="loadBadge"
+                       text="LOW"
+                       styleClass="load-badge-low"/>
+            </HBox>
+
+            <Label fx:id="avgLoadLabel"
+                   text="Avg. 1.18 assignments per member"
+                   styleClass="tile-subtitle"/>
+        </VBox>
+    </StackPane>
+
+    <!-- ─────────── 2 • TEAM OVERVIEW ─────────────── -->
+    <StackPane GridPane.rowIndex="0" GridPane.columnIndex="1"
+               styleClass="stats-tile stats-kpi-tile">
+        <VBox alignment="CENTER" spacing="16">
+            <Label text="Team Overview" styleClass="tile-title"/>
+
+            <HBox alignment="CENTER" spacing="36">
+                <VBox alignment="CENTER" spacing="3">
+                    <Label fx:id="teamMembersCountLabel" text="11" styleClass="kpi-number"/>
+                    <Label text="Members" styleClass="kpi-label"/>
+                </VBox>
+
+                <VBox alignment="CENTER" spacing="3">
+                    <Label fx:id="tasksCountLabel" text="9" styleClass="kpi-number"/>
+                    <Label text="Tasks" styleClass="kpi-label"/>
+                </VBox>
+
+                <VBox alignment="CENTER" spacing="3">
+                    <Label fx:id="unassignedTasksLabel" text="2" styleClass="kpi-number-unassigned"/>
+                    <Label text="Unassigned" styleClass="kpi-label"/>
+                </VBox>
+
+                <VBox alignment="CENTER" spacing="3">
+                    <Label fx:id="avgTaskDurationLabel" text="8.0h" styleClass="kpi-number"/>
+                    <Label text="Avg. Duration" styleClass="kpi-label"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </StackPane>
+
+    <!-- ─────────── 3 • SKILLS DISTRIBUTION ───────── -->
+    <StackPane GridPane.rowIndex="1" GridPane.columnIndex="0"
+               styleClass="stats-tile stats-skills-tile">
+        <VBox alignment="CENTER" spacing="10">
+            <Label text="Skills Distribution" styleClass="tile-title"/>
+
+            <PieChart fx:id="skillsPieChart"
+                      prefWidth="260" prefHeight="260"
+                      styleClass="stats-pie-chart"/>
+
+            <Label fx:id="skillsNoteLabel"
+                   text="Total unique skills: 23"
+                   styleClass="tile-note"/>
+        </VBox>
+    </StackPane>
+
+    <!-- ─────────── 4 • TOP OVERLOADED MEMBERS ────── -->
+    <StackPane GridPane.rowIndex="1" GridPane.columnIndex="1"
+               styleClass="stats-tile stats-overload-tile">
+        <VBox alignment="CENTER" spacing="14">
+            <Label text="Top Overloaded Members" styleClass="tile-title"/>
+
+            <TableView fx:id="overloadedTable"
+                       prefHeight="230"
+                       styleClass="overload-table modern-table">
+                <columns>
+                    <TableColumn fx:id="memberNameCol"  text="Name"/>
+                    <TableColumn fx:id="taskCountCol"   text="Assignments"/>
+                </columns>
+            </TableView>
+
+            <Label fx:id="overloadedNoteLabel"
+                   text="Shows up to top 3 members with highest load"
+                   styleClass="tile-note"/>
+        </VBox>
+    </StackPane>
+
+</GridPane>

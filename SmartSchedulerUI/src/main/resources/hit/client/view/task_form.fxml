@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  FXML for the Task-editing form.
+      Controller: hit.client.controller.TaskFormController          -->
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<!--suppress ALL -->
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="hit.client.controller.TaskFormController"
+            prefWidth="480" prefHeight="670"
+            stylesheets="@../assets/style.css"
+            fx:id="rootPane">
+
+    <!-- The Outer container keeps everything centred and spaced -->
+    <VBox fx:id="cardBox"
+          spacing="22" alignment="TOP_CENTER"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          styleClass="task-form-box">
+
+        <!-- ───── Title (icon + text) ───── -->
+        <HBox spacing="8" alignment="CENTER"
+              AnchorPane.topAnchor="24" AnchorPane.leftAnchor="0"
+              AnchorPane.rightAnchor="0">
+
+            <!-- self-closing tag with /> at the end -->
+            <FontIcon fx:id="titleIcon"
+                      iconLiteral="mdi2p-plus-circle"
+                      iconSize="22"/>
+
+            <Label fx:id="titleLabel"
+                   text="Create a new task"
+                   styleClass="form-title"/>
+        </HBox>
+
+
+        <!-- ───── Grid of fields ───── -->
+        <GridPane hgap="12" vgap="4" minWidth="420">
+            <!-- column & row constraints keep labels aligned -->
+            <columnConstraints>
+                <ColumnConstraints minWidth="140" prefWidth="150" maxWidth="160"
+                                   halignment="RIGHT"/>
+                <ColumnConstraints minWidth="220" prefWidth="250"
+                                   halignment="LEFT"/>
+            </columnConstraints>
+            <rowConstraints>
+                <!-- alternating “field” & “error” rows -->
+                <RowConstraints minHeight="38"/>
+                <RowConstraints minHeight="18"/>
+                <RowConstraints minHeight="38"/>
+                <RowConstraints minHeight="18"/>
+                <RowConstraints minHeight="32"/>
+                <RowConstraints minHeight="32"/>
+                <RowConstraints minHeight="38"/>
+                <RowConstraints minHeight="18"/>
+                <RowConstraints minHeight="80"/>
+                <RowConstraints minHeight="18"/>
+                <RowConstraints minHeight="40"/>
+            </rowConstraints>
+
+            <!-- Task Name -->
+            <Label text="Task Name:" styleClass="field-name"
+                   GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="taskNameField" promptText="Enter task name"
+                       styleClass="form-input"
+                       GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label fx:id="taskNameError" text="Task name is required"
+                   styleClass="error-label"
+                   visible="false" managed="false"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <!-- Duration -->
+            <Label text="Duration (hours):" styleClass="field-name"
+                   GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="durationField" promptText="e.g. 10"
+                       styleClass="form-input"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label fx:id="durationError" text="Enter 1-1000"
+                   styleClass="error-label"
+                   visible="false" managed="false"
+                   GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <!-- Remaining (read-only) -->
+            <Label text="Remaining:" styleClass="field-name"
+                   GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <Label fx:id="remainingLabel" styleClass="secondary-text"
+                   GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+            <!-- Created At (read-only) -->
+            <Label text="Created At:" styleClass="field-name"
+                   GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <Label fx:id="createdAtLabel" styleClass="secondary-text"
+                   GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <!-- Priority -->
+            <Label text="Priority:" styleClass="field-name"
+                   GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="priorityCombo" styleClass="combo-box"
+                      GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+            <Label fx:id="priorityError" text="Choose priority"
+                   styleClass="error-label"
+                   visible="false" managed="false"
+                   GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+            <!-- Required Skills -->
+            <Label text="Required Skills:" styleClass="field-name"
+                   GridPane.rowIndex="8" GridPane.columnIndex="0"
+                   GridPane.valignment="TOP"/>
+            <VBox spacing="6"
+                  GridPane.rowIndex="8" GridPane.columnIndex="1">
+                <!-- Combobox anchor for type-ahead search -->
+                <AnchorPane fx:id="skillsComboBoxAnchor"
+                            minHeight="38" maxHeight="38"
+                            styleClass="skills-anchor-pane"/>
+                <!-- Tag list -->
+                <ScrollPane fx:id="skillsScrollPane" fitToWidth="true"
+                            minHeight="60" prefHeight="80" maxHeight="100"
+                            hbarPolicy="NEVER"
+                            styleClass="skills-scroll-pane">
+                    <FlowPane fx:id="skillsTagPane" hgap="8" vgap="8"
+                              prefWrapLength="260"
+                              styleClass="skills-tag-pane"/>
+                </ScrollPane>
+            </VBox>
+            <Label fx:id="skillsError" text="Select at least one skill"
+                   styleClass="error-label"
+                   visible="false" managed="false"
+                   GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+        </GridPane>
+
+        <!-- ───── Action Buttons ───── -->
+        <HBox spacing="18" alignment="CENTER" styleClass="button-bar">
+
+            <!-- Save (primary action) -->
+            <Button fx:id="saveButton" onAction="#onSave"
+                    styleClass="form-main-btn">
+                <graphic>
+                    <!-- floppy-disk icon -->
+                    <FontIcon iconLiteral="mdi2c-content-save" iconSize="16"/>
+                </graphic>
+                <text>Save</text>
+            </Button>
+
+            <!-- Delete (danger) -->
+            <Button fx:id="deleteButton" onAction="#onDelete"
+                    styleClass="form-danger-btn">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2t-trash-can" iconSize="16"/>
+                </graphic>
+                <text>Delete task</text>
+            </Button>
+
+            <!-- Cancel (neutral) -->
+            <Button fx:id="cancelButton" onAction="#onCancel"
+                    styleClass="form-cancel-btn">
+                <graphic>
+                    <!-- close-circle icon -->
+                    <FontIcon iconLiteral="mdi2c-close-circle" iconSize="16"/>
+                </graphic>
+                <text>Cancel</text>
+            </Button>
+        </HBox>
+
+
+    </VBox>
+</AnchorPane>
